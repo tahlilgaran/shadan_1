@@ -1,0 +1,23 @@
+{% extends "search.html" %}
+	{% block film_result %}
+        {% if not result  %}
+            No resutl found with this keyword.
+        {% else %}
+            {% for film in result %}
+                <section class= "info , col-md-6"><a href="/film/{{ film.id }}">
+                <h2>{{ film.title }}</h2></a>
+                <img src="/{{ film.picture }}" class="col-md-12" />
+
+                <div class="col-md-12">
+                    <table class="table table-hover , col-md-12">
+                        <tr><td>Title:</td><td>{{ film.title }}</td></tr>
+                        <tr><td>Director:</td><td>{{ film.film_crew.director }}</td></tr>
+                        <tr><td>Writer:</td><td>{{ film.film_crew.writer }}</td></tr>
+                        <tr><td>Rating:</td><td>{{ film.rating }}</td></tr>
+                        <tr><td class="star">*********</td></tr>
+                    </table>
+                </div>
+                </section>
+            {% endfor %}
+        {% endif %}
+	{% endblock %}			

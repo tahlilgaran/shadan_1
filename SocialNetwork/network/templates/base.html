@@ -1,0 +1,130 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/../../static/SocialNetwork/css/main.css">
+    <!-- Latest compiled and minified CSS -->
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <title>MVCenter</title>
+</head>
+<body>
+  	<header></header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">MVCenter</a>
+          </div>
+
+          <div class="collapse navbar-collapse">
+          <!-- is the tab active or not -->
+            <ul class="nav navbar-nav">
+                <li class={% if timeline_isactive == "active" %}"active"{% else %}""{% endif %}><a href="/timeline/{{ me.username }}">timeline</a></li>
+                <li class={% if timeline_isactive == "active" %}"active"{% else %}""{% endif %}><a href="/profile/{{ me.username }}">profile</a></li>
+              </ul>
+
+              <form method="get" action="/search/film/" class="navbar-form navbar-left">{% csrf_token %}
+                <div class="form-group">
+                    <input type="text" name="search_value" class="form-control" placeholder="Search" />
+                </div>
+                <button type="submit" class="btn btn-default" id="search_link">Search</button>
+              </form>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Notifications <span class="caret"></span></a>
+                  	<ul class="payam , dropdown-menu" role="menu">
+{#                  	<!-- menu -->#}
+{#                  		{% block drop_down_menue %}{% endblock %}#}
+{#                  	<!-- endmenu -->#}
+                        {% if notifs %}
+                            {% for note in notifs %}
+                                <li><a href="#">
+                                    <img src="/{{ note.producer.picture }}" class="col-md-3" />
+                                    <div class="name , col-md-9"><strong>{{ note.producer.user.username }}</strong></div>
+                                    <div class="info , col-md-9 "> {{ note.content }}</div>
+                                </a></li>
+                            {% endfor %}
+                        {% else %}
+                            <div class="name , col-md-12"><strong>You are new in our site.</strong></div>
+                            <div class="info , col-md-8 ">there is no notification for you.</div>
+                        {% endif %}
+		            </ul>
+                </li>
+
+                <li><a href="#">setting</a></li>
+                <li><a href="/logout/">sign out</a></li>
+              </ul>
+          </div>
+      </div>
+    </nav>
+
+    <!-- search_nav_bar -->
+    {% block search_bar %}{% endblock %}
+
+    <article class="container">
+	  	<main class="col-xs-12 col-sm-6 col-md-8">
+		    <div class="blog-header">
+		          <h1 class="blog-title">MVCenter</h1>
+		          <p class="lead blog-description">you can see, find or add your favorite moveis.</p>
+		    </div>
+		<!--   posts    -->
+			{% block timeline_posts %}{% endblock %}
+    	<!-- porofile -->
+    		{% block profile %}{% endblock %}
+    	<!-- searchـresult -->
+    		{% block search_result %}{% endblock %}
+    	<!-- post -->
+    		{% block post %}{% endblock %}
+
+    	</main>
+
+    	<!-- aside -->
+	    <aside class="col-xs-6 col-md-4 ">
+		    <table class="table table-hover , col-md-12">
+		    	<thead>
+		        	<tr><th>your may know</th></tr>
+		      	</thead>
+                {% for prof in cprof %}
+		        	<tr><td><a href="/profile/{{ prof.user.username }}" ><img src="/{{ prof.picture }}" class="col-md-3"><span class="col-md-9">{{ prof.user.first_name }} {{ prof.user.last_name }}</span><span class="col-md-9">{{ prof.location }}</span></a></td></tr>
+                {% endfor %}
+		    </table>
+
+
+		    <table class="table table-hover , col-md-12">
+		    	<thead>
+		        	<tr><th>suggested films</th></tr>
+		      	</thead>
+                {% for film in cfilm %}
+		        	<tr><td><a href="/film/{{ film.id }}"><img src="/{{ film.picture }}" class="col-md-4"><span class="col-md-8">{{ film.title }}</span><span class="col-md-8">{{ film.rating }}</span></a></td></tr>
+                {% endfor %}
+		    </table>
+
+
+{#		    <table class="table table-hover , col-md-12">#}
+{#		    	<thead>#}
+{#		        	<tr><th>top films</th></tr>#}
+{#		      	</thead>#}
+{#		        	<tr><td><a href="%%%"><img src="/../../static/SocialNetwork/img/p1.jpg" class="col-md-4"><span class="col-md-8">MoneyBall</span><span class="col-md-8">****</span></a></td></tr>#}
+{#		    </table>  #}
+		</aside>
+		<!-- endaside -->
+  	</article>
+
+  	<footer class="bs-docs-footer , col-md-12 , bg-info , initialism">
+    this site is designed by niloofar mahzoon and farzaneh tahouni!! <br>
+    all right reserved.
+  	</footer>
+
+
+  <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="/../../static/SocialNetwork/js/addComment.js"></script>
+    {% block script %}{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+{% extends "profile.html" %}
+	{% block user_profile%}
+		<section class= "info , col-md-12 , show">
+            {% if status != 'edit' %}
+            <div class="col-md-6">
+                <img src= "/{{ user.profile.picture }}" class="col-md-12"/>
+            </div>
+
+			<div class="col-md-6">
+                <table class="table table-hover">
+                    <tr>
+                        <td>Name:</td>
+                        <td style="text-transform : capitalize">{{user.first_name}} {{ user.last_name }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>UserName:</td>
+                        <td>{{user.username}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>email:</td>
+                        <td>{{user.email}}</td>
+                    </tr>
+                    {% if userprofile.birthday %}
+                    <tr>
+                        <td>Birthday:</td>
+                        <td>{{userprofile.birthday}}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if userprofile.location %}
+                    <tr>
+                        <td>Location:</td>
+                        <td>{{ userprofile.location }}</td>
+                    </tr>
+                    {% endif %}
+                    <tr>
+                        <td>FollowedBy:</td>
+                        <td><a id="numf" href ="/follow/followedby/{{ user.username }}" >{{followedBy}} users</a></td>
+                    </tr>
+                    <tr>
+                        <td>Followed:</td>
+                        <td><a href ="/follow/followed/{{ user.username }}" >{{followed}} users</a></td>
+                    </tr>
+                </table>
+                {% if user.username == me.username %}
+                <!-- myprofile -->
+                    {% if status != 'edit' %}
+                        <a type="button" class="col-md-12 , btn btn-info btn-lg" href="edit">Edit Profile</a>
+                    {% endif %}
+
+                {% else %}
+                <!-- otherprofile -->
+                    {% if status == 'unfollow' %}
+                        <button name="follow" type="button" class="col-md-12 , btn btn-success btn-lg" onclick="following(this)">Follow</button>
+                    {% else %}
+                        <button name="unfollow" type="button" class="col-md-12 , btn btn-danger btn-lg" onclick="following(this)">unFollow</button>
+                    {% endif %}
+                {% endif %}
+			</div>
+            {% else %}
+{#                editpage#}
+            <form action="" method="post">{% csrf_token %}
+                <div class="col-md-6">
+                    <img src= "/{{ userprofile.picture }}" class="col-md-12"/>
+                    {{ form.picture }}
+                </div>
+
+                <div class="col-md-6">
+                    <table class="table table-hover">
+                        <tr><td>{{ form.first_name.label }}:</td><td>{{ form.first_name }}</td></tr>
+                        <tr>{{ form.first_name.errors }}</tr>
+                        <tr><td>{{ form.last_name.label }}:</td><td>{{ form.last_name }}</td></tr>
+                        <tr>{{ form.last_name.errors }}</tr>
+                        <tr><td>{{ form.location.label }}:</td><td>{{ form.location }}</td></tr>
+                        <tr>{{ form.location.errors }}</tr>
+                        <tr><td>{{ form.birthday.label }}</td><td>{{ form.birthday }}</td></tr>
+                        <tr>{{ form.birthday.errors }}</tr>
+                    </table>
+
+                    <input type="submit" class="col-md-6 , btn btn-success btn-lg" value="save" />
+                    <a href="/profile/{{ user.username }}" type="button" class="col-md-6 , btn btn-default btn-lg">cancel</a>
+                </div>
+
+            </form>
+            {% endif %}
+		</section>
+
+{#        ================ post part =======================#}
+		{% for post in posts %}
+            <section class= "posts , col-md-6">
+
+			<div class="info">
+				<a href="/onepost/{{ post.author.user }}/{{ post.id }}" ><h3 class="title , col-md-10">{{ post.film.title }}</h3></a>
+				<img  class="big_img , col-md-12" src="/{{ post.film.picture }}">
+				<div class="text , col-md-12">{{ post.body }}</div>
+			</div>
+			<table class="col-md-12 , table">
+				<thead>
+					<tr>
+						<th class="col-md-1">rating</th>
+						<th class="col-md-4">date</th>
+						<th class="col-md-2">likes</th>
+						<th class="col-md-2">comments</th>
+					</tr>
+				</thead>
+				<tr>
+                    <td>{{ post.film.rating }}</td><td>{{ post.pub_date }}</td><td>{{ post.numlike }}</td><td>{{ post.numComments }}</td>
+				</tr>
+			</table>
+		</section>
+		{% endfor %}
+	{% endblock %}
+
+{% block script %}
+    <script>
+
+        function following(button) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', 'followchange/');
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        if (button.name == "follow") {
+                            button.setAttribute("class", "col-md-12 , btn btn-danger btn-lg");
+                            button.innerHTML = "unFollow";
+                            var numf = document.querySelector("#numf");
+                            var val = parseInt(numf.innerHTML);
+                            numf.innerHTML = val + 1 +' users';
+                            button.name = "unfollow";
+                        } else {
+                            button.setAttribute("class", "col-md-12 , btn btn-success btn-lg");
+                            button.innerHTML = "follow";
+                            var td = document.querySelector("#numf");
+                            var val = parseInt(td.innerHTML);
+                            td.innerHTML = val - 1 + ' users';
+                            button.name = "follow";
+                        }
+                    } else {
+                        alert('error');
+                    }
+                }
+            };
+
+            xhr.send(null);
+        }
+    </script>
+{% endblock %}

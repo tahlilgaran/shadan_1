@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../static/SocialNetwork/css/main.css">
+    <link rel="stylesheet" href="../../../../../bootstrap-3.3.2-dist/css/bootstrap.min.css">
+     <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    
+</head>
+<body>
+	<header></header>
+  	<nav class="navbar navbar-default navbar-fixed-top">
+	    <div class="container-fluid">
+	    	<div class="navbar-header">
+	        	<a class="navbar-brand">MVCenter</a>
+	        </div>
+
+	        <div class="collapse navbar-collapse">
+
+	        	<ul class="nav navbar-nav">
+	            	<li><a href="timeline.html">timeline</a></li>
+	            	<li><a href="myprofile.html">profile</a></li>
+	          	</ul>
+
+	          	<form class="navbar-form navbar-left" role="search">
+	            	<div class="form-group">
+	              		<input type="text" class="form-control" placeholder="Search">
+	            	</div>
+	            	<a href="usersearch.html" type="submit" class="btn btn-default">Submit</a>
+	          	</form>
+
+	          	<ul class="nav navbar-nav navbar-right">
+	            	<li class="dropdown">
+	              		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Notifications <span class="caret"></span></a>
+		            	<ul class="payam , dropdown-menu" role="menu">
+		            		<li><a href="#">
+			                	<img src="../../static/SocialNetwork/img/2.jpg" class="col-md-4" />
+                  				<div class="name , col-md-8"><strong>Niloofar Mahzoon</strong></div>
+                  				<div class="info , col-md-8 "> liked your post.</div>
+
+			                </a></li>
+			                <li><a href="#">
+			                	<img src="../../static/SocialNetwork/img/2.jpg" class="col-md-4" />
+                  				<div class="name , col-md-8"><strong>Niloofar Mahzoon</strong></div>
+                  				<div class="info , col-md-8 "> comment on your post.</div>
+
+			                </a></li>
+			                <li><a href="#">
+			                	<img src="../../static/SocialNetwork/img/2.jpg" class="col-md-4" />
+                  				<div class="col-md-8"><strong>Niloofar Mahzoon</strong></div>
+                  				<div class="col-md-8">Followed you.</div>
+			                </a></li>
+			                <li><a href="#">
+			                	<img src="../../static/SocialNetwork/img/1.jpg" class="col-md-4" />
+                  				<div class="col-md-8"><strong>Farzaneh Tahouni</strong></div>
+                  				<div class="col-md-8">comment on title post you.</div>
+			                </a></li>
+
+		            </ul>
+	            	</li>
+
+	            	<li><a href="#">setting</a></li>
+	            	<li><a href="../../users/templates/login.html">sign out</a></li>	            
+	          	</ul>
+	        </div>
+	    </div>
+    </nav>	
+   	<article class="container">
+	<main class="col-xs-12 col-sm-6 col-md-8">
+		
+
+		<div class="blog-header">
+        	<h1 class="blog-title">MVCenter</h1>
+        	<p class="lead blog-description">you can see, find or add your favarit moveis.</p>
+      	</div>
+
+
+
+
+		<section class= "info , col-md-12">
+			<img src="../../static/SocialNetwork/img/2.jpg" class="col-md-6" />
+			
+			<div class="col-md-6">
+				<table class="table table-hover">
+					<tr>
+						<td>Name:</td>
+						<td>Niloofar Mahzoon</td>
+					</tr>
+					<tr>
+						<td>UserName:</td>
+						<td>niloofarmahzoon</td>
+					</tr>
+					<tr>
+						<td>FollowedBy:</td>
+						<td ><span id="numf">40</span>
+						 users</td>
+					</tr>
+					<tr>
+						<td>Followed:</td>
+						<td>30 users</td>
+					</tr>
+				</table>
+			</div>
+			<button name="follow" type="button" class="col-md-6 , btn btn-success btn-lg" onclick="following(this)">Follow</button>
+		</section>
+
+
+		<section class= "posts , col-md-6">
+			
+			<div class="info">
+				<h3 class="title , col-md-10">post-title</h3>
+				<img  class="big_img , col-md-12" src="../../static/SocialNetwork/img/p1.jpg">
+				<div class="text , col-md-12">
+					this film is about very exiting hapenning....... .
+					this film is about very exiting hapenning....... .
+					this film is about very exiting hapenning....... .
+					this film is about very exiting hapenning....... .
+				</div>
+			</div>
+			<table class="col-md-12 , table">
+				<thead>
+					<tr>
+						<th class="col-md-1">score</th>
+						<th class="col-md-4">date</th>
+						<th class="col-md-2">likes</th>
+						<th class="col-md-2">comments</th>
+					</tr>
+				</thead>
+				<tr>
+					<td>8.8</td>
+					<td>
+						2013-02-12
+					</td>
+					<td>
+						20
+					</td>
+					<td>
+						30
+					</td>
+				</tr>
+				<div class="star , col-md-12 ">
+						*********
+					
+				<div>
+			</table>							
+		</section>
+
+		<section class= "posts , col-md-6">
+			
+			<div class="info">
+				<h3 class="title , col-md-10">post-title</h3>
+				<img  class="big_img , col-md-12" src="../../static/SocialNetwork/img/p2.jpg">
+				<div class="text , col-md-12">
+					this film is about very exiting hapenning....... .
+					this film is about very exiting hapenning....... .
+					this film is about very exiting hapenning....... .
+					this film is about very exiting hapenning....... .
+				</div>
+			</div>
+			<table class="col-md-12 , table">
+				<thead>
+					<tr>
+						<th class="col-md-1">score</th>
+						<th class="col-md-4">date</th>
+						<th class="col-md-2">likes</th>
+						<th class="col-md-2">comments</th>
+					</tr>
+				</thead>
+				<tr>
+					<td>8.8</td>
+					<td>
+						2013-02-12
+					</td>
+					<td>
+						20
+					</td>
+					<td>
+						30
+					</td>
+				</tr>
+				<div class="star , col-md-12 ">
+						*********
+					
+				<div>
+			</table>							
+		</section>
+
+		</main>
+
+
+
+		<aside class="col-xs-6 col-md-4 ">
+		    <table class="table table-hover , col-md-12">
+		    	<thead>
+		        	<tr><th>your may know</th></tr>
+		      	</thead>
+		        	<tr><td><img src="../../static/SocialNetwork/img/2.jpg" class="col-md-3"><span class="col-md-9">Niloofar Mahzoon</span><span class="col-md-9">sharif university of technology</span></tr>
+		        	<tr><td><img src="../../static/SocialNetwork/img/1.jpg" class="col-md-3"><span class="col-md-9">Farzaneh Tahouni</span><span class="col-md-9">sharif university of technology</span></tr>
+		    </table>
+
+
+		    <table class="table table-hover , col-md-12">
+		    	<thead>
+		        	<tr><th>suggested films</th></tr>
+		      	</thead>
+		        	<tr><td><img src="../../static/SocialNetwork/img/p2.jpg" class="col-md-4"><span class="col-md-8">Inception</span><span class="col-md-8">****</span></tr>
+		        	<tr><td><img src="../../static/SocialNetwork/img/p1.jpg" class="col-md-4"><span class="col-md-8">ManeyBall</span><span class="col-md-8">****</span></tr>
+		    </table>
+
+
+		    <table class="table table-hover , col-md-12">
+		    	<thead>
+		        	<tr><th>top films</th></tr>
+		      	</thead>
+		        	<tr><td><img src="../../static/SocialNetwork/img/p1.jpg" class="col-md-4"><span class="col-md-8">MoneyBall</span><span class="col-md-8">****</span></tr>
+		    </table>  
+		</aside>
+	</article>
+	<footer class="bs-docs-footer , col-md-12 , bg-info , initialism">
+		this site is designed by niloofar mahzoon and farzaneh tahouni!! <br>
+		all right reserved.
+	</footer>
+
+	<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="../../static/SocialNetwork/js/addComment.js"></script>
+</body>
+</html>

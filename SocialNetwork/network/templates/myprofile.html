@@ -1,0 +1,99 @@
+{% extends "profile.html" %}
+
+	<section class= "info , col-md-12 , show">
+			<img src="../../static/SocialNetwork/img/1.jpg" class="col-md-6" />
+			
+			<div class="col-md-6">
+				<table class="table table-hover">
+					<tr>
+						<td>Name:</td>
+						<td>Farzaneh Tahouni</td>
+					</tr>
+					<tr>
+						<td>UserName:</td>
+						<td>fartahouni</td>
+					</tr>
+					<tr>
+						<td>FollowedBy:</td>
+						<td>20 users</td>
+					</tr>
+					<tr>
+						<td>Followed:</td>
+						<td>30 users</td>
+					</tr>
+				</table>
+			</div>
+			<button type="button" class="col-md-6 , btn btn-info btn-lg" onclick="edit(this)">Edit Profile</button>
+		</section>
+
+		<!-- <section class= "info , col-md-12 , hidden" id="edit">
+			<img src="img/1.jpg" class="col-md-6" />
+			
+			<div class="col-md-6">
+				<table class="table table-hover">
+					<tr>
+						<td>Name:</td>
+						 <td><input type="email" class="form-control" id="inputEmail3" value="Farzaneh Tahouni"></td>
+					</tr>
+					<tr>
+						<td>UserName:</td>
+						<td>fartahouni</td>
+					</tr>
+					<tr>
+						<td>FollowedBy:</td>
+						<td>20 users</td>
+					</tr>
+					<tr>
+						<td>Followed:</td>
+						<td>30 users</td>
+					</tr>
+				</table>
+			</div>
+			<button type="button" class="col-md-3 , btn btn-success btn-lg" onclick="hiding2(this)">Save</button>
+			<button type="button" class="col-md-3 , btn btn-default btn-lg" onclick="hiding2(this)">cancel</button>
+
+		</section> -->
+
+
+	<section class= "posts , col-md-6">
+			
+			<div class="info">
+				<h3 class="title , col-md-10">post-title</h3>
+				<img  class="big_img , col-md-12" src="../../static/SocialNetwork/img/p1.jpg">
+				<div class="text , col-md-12">
+					this film is about very exiting hapenning....... .
+					this film is about very exiting hapenning....... .
+					this film is about very exiting hapenning....... .
+					this film is about very exiting hapenning....... .
+				</div>
+			</div>
+			<table class="col-md-12 , table">
+				<thead>
+					<tr>
+						<th class="col-md-1">score</th>
+						<th class="col-md-4">date</th>
+						<th class="col-md-2">likes</th>
+						<th class="col-md-2">comments</th>
+					</tr>
+				</thead>
+				<tr>
+					<td>8.8</td>
+					<td>
+						2013-02-12
+					</td>
+					<td>
+						20
+					</td>
+					<td>
+						30
+					</td>
+				</tr>
+				<div class="star , col-md-12 ">
+						*********
+					
+				<div>
+			</table>					
+		</section>
+
+		</main>
+		{% block aside %}{% endblock %}

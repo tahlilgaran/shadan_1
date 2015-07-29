@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+{% block timeline_posts %}
+    <div style="font-size: large"> {{ er }}</div>
+    {% for post in posts %}
+    <section class= "posts , col-md-12">
+      <div class="header">
+
+          <img class="small_img , col-md-2" src="/{{ post.author.picture }}" />
+        <div class="writer , col-md-10"><storng>{{ post.author.user.first_name }} {{ post.author.user.last_name }}</storng></div>
+          <h3 class="title , col-md-10">{{ post.film.title }}</h3>
+      </div>
+      <div class="info">
+
+        <img  class="big_img , col-md-12" src="/{{ post.film.picture }}">
+        <div class="text , col-md-12">
+          {{ post.body }}
+        </div>
+      </div>
+
+      <input type="hidden" id="me" value="{{ me.username }}"/>
+        {% if post in likes %}
+            <button id="1" name="dislike" class="btn btn-xs  btn-danger , col-md-2 , pull-right" onclick="jlike1(this)"   >unlike!</button>
+        {% else %}
+            <button id="1" name="like" class="btn btn-xs  btn-success , col-md-2 , pull-right" onclick="jlike1(this)"   >like!</button>
+        {% endif %}
+
+      <table class="col-md-12 , table">
+        <thead>
+          <tr>
+            <th class="col-md-2">score</th>
+            <th class="col-md-4"></th>
+            <th class="col-md-2">date</th>
+            <th class="col-md-2">likes</th>
+            <th class="col-md-2">comments</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>{{ post.film.rating }}</td>
+          <td class="star">
+{#            {% for i in post.film.rating %}#}
+{#                *#}
+{#            {% endfor %}#}
+              *********
+
+          </td>
+          <td>
+            {{ post.pub_date }}
+          </td>
+          <td class="numlike">
+            {{ post.numlike }}
+          </td>
+          <td class="numcomment">
+            {{ post.numComments }}
+          </td>
+        </tr>
+      </table>
+
+
+      <table class="comments , col-md-12">
+          {% for comments in c %}
+              {% if forloop.counter == forloop.parentloop.counter %}
+                  {% for comment in comments %}
+                  <tr><td>
+                    <img class="small_img , col-md-2" src= "/{{ comment.user.picture }}" />
+                    <span class="writer , col-md-8"><strong>{{ comment.user.user.username }}</strong></span>
+                    <span class="date , col-md-2"><strong>{{ comment.timestamp }}</strong></span>
+                    <span class="text , col-md-10">
+                        {{ comment.comment }}
+            </span>
+          </td></tr>
+                  {% endfor %}
+              {% endif %}
+          {% endfor %}
+          <tr><td>
+            <span class="comments , col-md-12">
+                <input class="postid" value="{{ post.id }}" type="hidden"/>
+                <img class="small_img , col-md-2 imag" src="/{{ pme.picture }}" />
+                <span class="writer , col-md-8" ><strong class="muser">{{ pme.user.username }}</strong></span>
+                <span class="date , col-md-2" ><strong class="t">{{ time }}</strong></span>
+                <textarea  class="text , col-md-10 big comment"></textarea>
+            </span>
+          </td></tr>
+          <tr>
+            <td><span class="col-md-3"><input type="submit" class="comments ,btn btn-info btn-lg" value="submit" onclick="add1(this)" /></span>
+            <span class="col-md-9"><button name="1" type="button" class="comments ,btn btn-link" >show more comments!</button></span></td>
+          </tr>
+
+      </table>
+
+    </section>
+    {% endfor %}
+       <script>
+        function add1(button) {
+            event.preventDefault();
+            var table = button.parentNode.parentNode.parentNode.parentNode;
+            var comment = table.parentNode.querySelector(".comment");
+            var name = table.parentNode.querySelector(".muser").innerHTML;
+            var time = table.parentNode.querySelector(".t").innerHTML;
+            var post_id = table.parentNode.querySelector(".postid").value;
+            var xhr = new XMLHttpRequest();
+	        xhr.open('get', '/addcomment/?username=' + name + "&comment=" + comment.value + "&postid=" + post_id + "&time"+time);
+
+	        xhr.onreadystatechange = function() {
+
+		    if(xhr.readyState === 4) {
+			    if(xhr.status === 200) {
+				  var newrow = table.insertRow(0);
+
+                    var elements = [];
+                    elements[0] = document.createElement("img");
+                    elements[0].setAttribute("class","small_img , col-md-2");
+                    var image = table.parentNode.querySelector(".imag")
+                    elements[0].setAttribute("src",image.src);
+
+                    //<div class="writer , col-md-8"><strong>Current User</strong></div>
+                    elements[1] = document.createElement("div");
+                    elements[1].setAttribute("class","writer , col-md-8");
+                    elements[1].innerHTML="<strong>"+name+"</strong>";
+
+                    //<div class="date , col-md-2"><strong>2-03-2015</strong></div>
+                    elements[2] = document.createElement("div");
+                    elements[2].setAttribute("class","date , col-md-2");
+                    elements[2].innerHTML="<strong>"+time+"</strong>";
+
+                    //<div class="text , col-md-10">
+                    elements[3] = document.createElement("div");
+                    elements[3].setAttribute("class","text , col-md-10");
+                    elements[3].innerHTML=comment.value;
+
+                    //var newrow =  document.createElement("tr");
+                    for(var i=0 ; i<4 ; i++){
+                        newrow.appendChild(elements[i]);
+                    }
+                    comment.value = "";
+                    //var selector2 = "#numcomment"+button.name;
+                    var td = table.parentNode.parentNode.querySelector(".numcomment");
+                        var val = parseInt(td.innerHTML);
+                        td.innerHTML = val + 1;
+			}
+			else {
+				alert('Ajax error dad! :D');
+			}
+		}
+
+	};
+
+	xhr.send(null);
+}
+function jlike1(button){
+    event.preventDefault();
+    var name = document.querySelector("#me").value
+    var table = button.parentNode.parentNode.parentNode.parentNode;
+    var post_id = table.parentNode.querySelector(".postid").value;
+    if (button.name == "like") {
+        k ='like'
+    }else
+        k = 'dislike'
+    var xhr = new XMLHttpRequest();
+	        xhr.open('get', '/like/?username=' + name + "&postid=" + post_id + "&k=" + k);
+
+	        xhr.onreadystatechange = function() {
+
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        if (button.name == "like") {
+                            button.setAttribute("class", "btn btn-xs btn-danger , col-md-2 , pull-right");
+                            button.innerHTML = "unlike!";
+                            //var selector = "#numlike"+button.id;
+                            var td = button.parentNode.querySelector(".numlike");
+                            var val = parseInt(td.innerHTML);
+                            td.innerHTML = val + 1;
+                            button.name = "dislike";
+                        } else {
+                            button.setAttribute("class", "btn btn-xs btn-success , col-md-2 , pull-right");
+                            button.innerHTML = "like!";
+                            //var selector = "#numlike"+button.id;
+                            var td = button.parentNode.querySelector(".numlike");
+                            var val = parseInt(td.innerHTML);
+                            td.innerHTML = val - 1;
+                            button.name = "like";
+                        }
+                    }else {
+				        alert('Ajax error dad! :D');
+			        }
+                }
+            }
+    xhr.send(null);
+}
+        </script>
+
+{% endblock %}
+
+
+{% block aside %}
+      <!-- aside.html nemidoonam inja ro bayad chi kar konim. -->
+{% endblock %}

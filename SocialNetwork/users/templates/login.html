@@ -1,0 +1,72 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>login</title>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<link rel="stylesheet" type="text/css" href="../../static/users/css/user.css">
+    <link rel="stylesheet" href="../../../../../bootstrap-3.3.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">MVCenter</a>
+            </div>
+        </div>
+    </nav>
+
+    <article class="container">
+        <main class="col-xs-12 col-sm-6 col-md-12">
+            <div class="blog-header , col-md-12">
+                <h1 class="blog-title">MVCenter</h1>
+                <p class="lead blog-description">you can see, find or add your favarit moveis.</p>
+            </div>
+
+            <section class= "info , col-md-6 ">
+                <div class="col-md-12 , error_payam">
+                    {% if wrong_user_pass %}
+                        <p>Your username or password is wrong!</p>
+                    {% endif %}
+                </div>
+
+                <form method="post" action="" class="col-md-12">
+	                {% csrf_token %}
+                <div class="col-md-12 , form_field">
+                    <label for="inputEmail3" class="col-md-2 control-label , inputError1">Username:</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control , inputError1" name="username" id="inputEmail3" placeholder="username">
+                    </div>
+                </div>
+
+                <div class="col-md-12 , form_field">
+                    <label for="inputEmail3" class="col-md-2 control-label , inputError1">Password:</label>
+                    <div class="col-md-10">
+                        <input type="password" class="form-control , inputError1" id="inputEmail3" name="pwd" placeholder="password">
+                    </div>
+                </div>
+
+                <div class="col-md-10 , pull-right">
+                    <input class="btn btn-success"  value="SignIn" role="button" type="submit">
+                    <input class="btn btn-default" type="submit"  name ="signup" role="button" value="SignUp">
+                    <input type="submit"  name="forget" class="btn btn-link" value="ForgerPassword">
+                </div>
+                </form>
+            </section>
+        </main>
+    </article>
+
+    <footer class="bs-docs-footer , col-md-12 , bg-info , initialism">
+    this site is designed by niloofar mahzoon and farzaneh tahouni!! <br>
+    all right reserved.
+    </footer>
+</body>
+<!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</html>

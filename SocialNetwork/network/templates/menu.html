@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block drop_down_menu %}
+    {% for note in me.notification %}
+	<li><a href="#">
+       	<img src="/{{ note.producer.picture }}" class="col-md-4" />
+       	<div class="name , col-md-8"><strong>{{ note.producer.user.username }}</strong></div>
+        <div class="info , col-md-8 "> {{ note.content }}</div>
+
+	</a></li>
+	{% endfor %}
+
+{% endblock %}

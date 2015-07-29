@@ -1,0 +1,72 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>forget</title>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<link rel="stylesheet" type="text/css" href="../../static/users/css/user.css">
+    <link rel="stylesheet" href="../../../../../bootstrap-3.3.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">MVCenter</a>
+            </div>
+        </div>
+    </nav>
+
+    <article class="container">
+        <main class="col-xs-12 col-sm-6 col-md-12">
+            <div class="blog-header , col-md-12">
+                <h1 class="blog-title">MVCenter</h1>
+                <p class="lead blog-description">you can see, find or add your favorite movies.</p>
+            </div>
+
+            <section class= "info , col-md-6 ">
+            {% if has_send == 2 %}
+                <div class="col-md-12  , success_payam">
+                        New Password will send to your e-mail.
+
+                </div>
+            {% endif %}
+            {% if has_send == 0 %}
+                <div class="col-md-12 , error_payam">
+
+                    An error accured.
+
+                </div>
+            {% endif %}
+                <form method="post" action="" class="col-md-12">
+                    {% csrf_token %}
+                <div class="col-md-12 , form_field">
+                    <label for="inputEmail3" class="col-md-2 control-label , inputError1">Email:</label>
+                    <div class="col-md-10">
+                        <input type="email" name="email" class="form-control , inputError1" id="inputEmail3" placeholder="email">
+                    </div>
+                </div>
+
+                <div class="col-md-10 , pull-right">
+                    <input name="confirm" class="btn btn-success" type="submit" role="button" value="Confirm">
+                    <input name="signup" class="btn btn-default" type="submit" role="button" value="SignUp">
+                    <input type="submit" name="cancel" class="btn btn-link" value="Cancel">
+                </div>
+               </form>
+            </section>
+        </main>
+    </article>
+
+    <footer class="bs-docs-footer , col-md-12 , bg-info , initialism">
+    this site is designed by niloofar mahzoon and farzaneh tahouni!! <br>
+    all right reserved.
+    </footer>
+    <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+	{% block profile%}
+    {% if followed  %}
+        {% for follow in followed %}
+            <section class= "info , col-md-6"><a href="/profile/{{ follow.followed.user.username }}">
+                <img src="\{{ follow.followed.picture }}" class="col-md-4" />
+                <div class="col-md-8">
+                    <table class="table table-hover">
+                        <tr><td>Name:</td><td>{{follow.followed.user.first_name}} {{ follow.followed.user.last_name }}</td></tr>
+                        <tr><td>age:</td><td>{{ follow.followed.age }}</td></tr>
+                    </table>
+                </div></a>
+            </section>
+            {% endfor %}
+    {% elif follower %}
+        {% for follow in follower %}
+            <section class= "info , col-md-6"><a href="/profile/{{ follow.follower.user.username }}">
+                <img src="\{{ follow.follower.picture }}" class="col-md-4" />
+                <div class="col-md-8">
+                    <table class="table table-hover">
+                        <tr><td>Name:</td><td>{{follow.follower.user.first_name}} {{ follow.follower.user.last_name }}</td></tr>
+                        <tr><td>age:</td><td>{{ follow.follower.age }}</td></tr>
+                    </table>
+                </div></a>
+            </section>
+        {% endfor %}
+    {% else %}
+        <h3>No people found...</h3>
+    {% endif %}
+{% endblock %}

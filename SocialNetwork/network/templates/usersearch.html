@@ -1,0 +1,48 @@
+{% extends "search.html" %}
+	{% block user_result %}
+        {% if not result  %}
+            No resutl found with this keyword.
+        {% else %}
+            {% for user in result %}
+                <section class= "info , col-md-6"><a href="/profile/{{ user.username }}">
+                <img src="\{{ user.profile.picture }}" class="col-md-4" />
+                <div class="col-md-8">
+                    <table class="table table-hover">
+                        <tr><td>Name:</td><td>{{user.first_name}} {{ user.last_name }}</td></tr>
+                        <tr><td>age:</td><td>{{ user.profile.age }}</td></tr>
+                    </table>
+                </div></a>
+                </section>
+            {% endfor %}
+        {% endif %}
+	{% endblock %}
+
+
+{#   {% block script %}#}
+{#   <script type="text/javascript">#}
+{#	var input = document.querySelector("#id_username")#}
+{#	input.addEventListener('keyup', function(event) {#}
+{#		var username = input.value;#}
+{##}
+{#		var xhr = new XMLHttpRequest();#}
+{#		xhr.open('post', '/accounts/search/?name=' + username);#}
+{##}
+{#		xhr.onreadystatechange = function() {#}
+{#			if(xhr.readyState === 4) {#}
+{#				if(xhr.status === 200) {#}
+{#					var data = JSON.parse(xhr.responseText);#}
+{##}
+{#					for(var i in data) {#}
+{#						console.log(data[i]);#}
+{#					}#}
+{#				}#}
+{#				else {#}
+{#					//alert('Error!');#}
+{#				}#}
+{#			}#}
+{#		};#}
+{##}
+{#		xhr.send(null)#}
+{#	});#}
+{#    </script>#}
+{#    {% endblock %}#}

@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>signup</title>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<link rel="stylesheet" type="text/css" href="../../static/users/css/user.css">
+  <link rel="stylesheet" href="../../../../../bootstrap-3.3.2-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Latest compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">MVCenter</a>
+            </div>
+        </div>
+    </nav>
+
+    <article class="container">
+        <main class="col-xs-12 col-sm-6 col-md-12">
+            <div class="blog-header , col-md-12">
+                <h1 class="blog-title">MVCenter</h1>
+                <p class="lead blog-description">you can see, find or add your favarit moveis.</p>
+            </div>
+
+            <section class= "info , col-md-6 ">
+              {% comment %}  {% if er %}
+              <div id="confirm" style="color: green" class="col-md-12 , success_payam">
+                    Confirmation will send to your e-mail.
+                </div>
+                {% endif %} {% endcomment %}
+
+
+                <form action="" method="post">{% csrf_token %}
+
+                <div class="col-md-10">
+                    <table class="table table-hover">
+                        <tr><td>{{ form.email.label }}:</td><td>{{ form.email }}</td></tr>
+                        <tr><td></td><td>{{ form.email.errors }}</td></tr>
+                        <tr><td>{{ form.username.label }}:</td><td>{{ form.username }}</td></tr>
+                        <tr><td></td><td class="error">{{ form.username.errors }}</td></tr>
+                        <tr><td>{{ form.firstname.label }}:</td><td>{{ form.firstname }}</td></tr>
+                        <tr><td></td><td class="error">{{ form.firstname.errors }}</td></tr>
+                        <tr><td>{{ form.lastname.label }}:</td><td>{{ form.lastname }}</td></tr>
+                        <tr><td></td><td class="error">{{ form.lastname.errors }}</td></tr>
+                        <tr><td>{{ form.password.label }}:</td><td>{{ form.password }}</td></tr>
+                        <tr><td></td><td class="error">{{ form.password.errors }}</td></tr>
+                        <tr><td>{{ form.confirm_password.label }}:</td><td>{{ form.confirm_password }}</td></tr>
+                        <tr><td></td><td class="error">{{ form.confirm_password.errors }}</td></tr>
+                        <tr><td>{{ form.location.label }}:</td><td>{{ form.location }}</td></tr>
+                        <tr><td></td><td class="error">{{ form.location.errors }}</td></tr>
+                        <tr><td>{{ form.birthday.label }}</td><td>{{ form.birthday }}</td></tr>
+                        <tr><td></td><td class="error">{{ form.birthday.errors }}</td></tr>
+                    </table>
+                    <div class="col-md-12 , pull-right">
+                    <input type="submit" name="save" class="bn, col-md-6 , btn btn-success btn-lg" value="submit" />
+                    <input type="submit" name="cancel" class="bn, col-md-6 , btn btn-default btn-lg" value="cancel"/>
+                    </div>
+                </div>
+            </form>
+   {% comment %}         </form>
+                <div class="col-md-12 , form-group">
+                    <label  class="col-md-4 ">Email:</label>
+                    <div class="col-md-8">
+                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                        <span class="error"></span>
+                    </div>
+
+                </div>
+
+                <div class="col-md-12 , form-group ">
+                    <label for="inputEmail3" class="col-md-4 control-label , inputError1">User Name:</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control " id="username" placeholder="Enter username">
+                        <span class="error"></span>
+
+                    </div>
+                </div>
+
+                <div class="col-md-12 , form-group ">
+                    <label for="inputEmail3" class="col-md-4 control-label , inputError1">Name:</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control " id="name" placeholder="Enter your name">
+                        <span class="error"></span>
+                    </div>
+                </div>
+                    
+                <div class="col-md-12 , form-group ">
+                    <label for="inputEmail3" class="col-md-4 control-label, inputError1">Password:</label>
+                    <div class="col-md-8">
+                        <input type="password" class="form-control " id="pwd" placeholder="Enter password">
+                        <span class="error"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-12 , form-group ">
+                    <label for="inputEmail3" class="col-md-4 control-label , inputError1">Confirm Password:</label>
+                    <div class="col-md-8">
+                        <input type="password" class="form-control " id="cpwd" placeholder="Enter Password again">
+                        <span class="error"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-12 , form-group ">
+                    <label for="inputEmail3" class="col-md-4 control-label ">BirthDay:</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="birthday" placeholder="dd/mm/yyyy">
+                        <span class="error"></span>
+                    </div>
+                </div> 
+
+                <div class="col-md-12 , form-group ">
+                    <label for="inputEmail3" class="col-md-4 control-label">Location:</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control " id="location" placeholder="Enter your location">
+                        <span class="error"></span>
+                    </div>
+                </div> 
+
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <div class="checkbox">
+                      <label><input type="checkbox"> I agree with every thing! :)</label>
+                      <span id="agree"></span>
+                    </div>
+                  </div>
+                </div>        
+                
+                <div class="col-md-12 , pull-right">
+                    <button class="btn btn-success" role="button" class="col-md-6" id="sub">Submit</button>
+                    <a class="btn btn-default" href="login.html" role="button" class="col-md-6">Cancel</a>
+                </div>
+                               {% endcomment %}
+            </section>
+        </main>
+    </article>
+
+    <footer class="bs-docs-footer , col-md-12 , bg-info , initialism">
+    this site is designed by niloofar mahzoon and farzaneh tahouni!! <br>
+    all right reserved.
+    </footer>
+    <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</body>
+</html>

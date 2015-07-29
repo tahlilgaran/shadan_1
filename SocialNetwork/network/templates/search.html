@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block search_bar %}
+	<ul class="nav nav-tabs , col-md-12">
+		<li role="presentation" class="{{ film_active }}"><a href="/search/film/{{ key }}">result for films</a></li>
+		<li role="presentation" class={{ user_active }}><a href="/search/user/{{ key }}">result for users</a></li>
+	</ul>
+
+{% endblock %}
+
+{% block search_result %}
+		{% block film_result %}{% endblock %}
+		{% block user_result %}{% endblock %}
+{% endblock %}

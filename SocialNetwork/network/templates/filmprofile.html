@@ -1,0 +1,93 @@
+{% extends "profile.html" %}
+{% block film_profile %}
+	<section class= "info , col-md-12">
+		<h2 id="filmname">{{ film.title }}</h2>
+		<img src="/{{ film.picture }}" class="col-md-7" />
+			
+		<div class="col-md-5">
+			<table class="table table-hover , col-md-12">
+                <tr><td>Title:</td><td>{{ film.title }}</td></tr>
+                <tr>{{ film.title.error }}</tr>
+
+                <tr><td>Link:</td><td><a href = '{{ film.link }}'>www.imdb.com</a></td></tr>
+                <tr><td>Rate:</td><td>{{ film.rating }}</td></tr>
+                <tr><td>Director:</td><td>{{ film.film_crew.director }}</td></tr>
+                <tr><td>Producer:</td><td>{{ film.film_crew.producer }}</td></tr>
+                <tr><td>writer:</td><td>{{ film.film_crew.writer }}</td></tr>
+                <tr><td>Players:</td><td>{{ film.film_crew.player1 }}<br>{{ film.film_crew.player2 }}</td></tr>
+			</table>
+		</div>
+
+        <div class="text , col-md-12">{{ film.text }}</div>
+
+		<div class="col-md-12">
+
+			<label class="radio-inline">
+			 	<input type="radio" name="inlineRadioOptions" class="radio" value="option1" checked> 10
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="inlineRadioOptions" class="radio" value="option2"> 9
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="inlineRadioOptions" class="radio" value="option3"> 8
+			</label>
+			<label class="radio-inline">
+			 	<input type="radio" name="inlineRadioOptions" class="radio" value="option1"> 7
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="inlineRadioOptions" class="radio" value="option2"> 6
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="inlineRadioOptions" class="radio" value="option3"> 5
+			</label>
+			<label class="radio-inline">
+			 	<input type="radio" name="inlineRadioOptions" class="radio" value="option1"> 4
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="inlineRadioOptions" class="radio" value="option2"> 3
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="inlineRadioOptions" class="radio" value="option3"> 2
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="inlineRadioOptions" class="radio" value="option3" > 1
+			</label>
+		</div>
+        {% if film.total_rate != 0 %}
+        <p>{{ film.total_rate }} people have voted on this film, until now.</p>
+        {% else %}
+        <p>nobody have voted on this film, until now.</p>
+        {% endif %}
+		<button  type="button" class="btn btn-success btn , col-md-2" name = 'vote' onclick="voting(this)" data-toggle="modal" data-target=".bs-example-modal-lg">vote</button>
+
+		</section>
+
+        <!-- Large modal -->
+{#        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>#}
+
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <form action="" method="post">{% csrf_token %}
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{ film.title }}</h4>
+              </div>
+              <section class="modal-body">
+                  <div class="info">
+                    <img  class="big_img , col-md-12" src="/{{ film.picture }}">
+                    <div> your vote :  <span id="vote"></span> </div>
+                    <input class="hidden" id='vote_result' name="vote_result" value=""/>
+			</div>
+              </section>
+              <div class="modal-footer">
+                <textarea class =" col-md-12 , form-control" name="post_text" placeholder="type your post here..."></textarea>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-success">Post</button>
+              </div>
+            </div>
+          </div>
+        </form>
+        </div>
+
+	{% endblock %}

@@ -1,0 +1,50 @@
+.star{
+	font-size: 30px;
+	color: #19A83B;
+}
+article{
+	margin-top: 50px;
+}
+.big_img{
+	width: 50px;
+	/*height: 200px;*/
+}
+
+.posts{
+	border: 3px solid #eee;
+	padding: 20px;
+}
+
+section.posts * , section.info *{
+	margin-top: 7px;
+	margin-bottom: 7px;
+}
+
+section.posts , section.info{
+	margin-top: 10px;
+	margin-bottom: 10px;
+} 
+
+section textarea.posts {
+	height: 200px;
+}
+
+footer{
+	text-align: center;
+	height: 70px;
+	padding: 15px;
+
+}
+
+ul.payam{
+	width: 350px;
+}
+
+textarea.big{
+    min-height: 100px ;
+}
+
+.editable{
+    background-color : rgba(205, 218, 128, 0.13);
+}
+
