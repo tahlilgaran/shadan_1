@@ -9,53 +9,53 @@
 			<div class="col-md-6">
                 <table class="table table-hover">
                     <tr>
-                        <td>Name:</td>
+                        <td>نام:</td>
                         <td style="text-transform : capitalize">{{user.first_name}} {{ user.last_name }}</td>
                     </tr>
 
                     <tr>
-                        <td>UserName:</td>
+                        <td>نام کاربری:</td>
                         <td>{{user.username}}</td>
                     </tr>
 
                     <tr>
-                        <td>email:</td>
+                        <td>آدرس ایمیل:</td>
                         <td>{{user.email}}</td>
                     </tr>
                     {% if userprofile.birthday %}
                     <tr>
-                        <td>Birthday:</td>
+                        <td>تاریخ تولد:</td>
                         <td>{{userprofile.birthday}}</td>
                     </tr>
                     {% endif %}
 
                     {% if userprofile.location %}
                     <tr>
-                        <td>Location:</td>
+                        <td>شهر:</td>
                         <td>{{ userprofile.location }}</td>
                     </tr>
                     {% endif %}
                     <tr>
-                        <td>FollowedBy:</td>
+                        <td>دنبال شونده:</td>
                         <td><a id="numf" href ="/follow/followedby/{{ user.username }}" >{{followedBy}} users</a></td>
                     </tr>
                     <tr>
-                        <td>Followed:</td>
+                        <td>دنبال کننده:</td>
                         <td><a href ="/follow/followed/{{ user.username }}" >{{followed}} users</a></td>
                     </tr>
                 </table>
                 {% if user.username == me.username %}
                 <!-- myprofile -->
                     {% if status != 'edit' %}
-                        <a type="button" class="col-md-12 , btn btn-info btn-lg" href="edit">Edit Profile</a>
+                        <a type="button" class="col-md-12 , btn btn-info btn-lg" href="edit">ویرایش اطلاعات</a>
                     {% endif %}
 
                 {% else %}
                 <!-- otherprofile -->
                     {% if status == 'unfollow' %}
-                        <button name="follow" type="button" class="col-md-12 , btn btn-success btn-lg" onclick="following(this)">Follow</button>
+                        <button name="follow" type="button" class="col-md-12 , btn btn-success btn-lg" onclick="following(this)">دنبال کن</button>
                     {% else %}
-                        <button name="unfollow" type="button" class="col-md-12 , btn btn-danger btn-lg" onclick="following(this)">unFollow</button>
+                        <button name="unfollow" type="button" class="col-md-12 , btn btn-danger btn-lg" onclick="following(this)">دنبال نکن</button>
                     {% endif %}
                 {% endif %}
 			</div>
@@ -79,8 +79,8 @@
                         <tr>{{ form.birthday.errors }}</tr>
                     </table>
 
-                    <input type="submit" class="col-md-6 , btn btn-success btn-lg" value="save" />
-                    <a href="/profile/{{ user.username }}" type="button" class="col-md-6 , btn btn-default btn-lg">cancel</a>
+                    <input type="submit" class="col-md-8 , btn btn-success " value="ذخیره" />
+                    <a href="/profile/{{ user.username }}" type="button" class="col-md-4 , btn btn-default ">انصراف</a>
                 </div>
 
             </form>
@@ -125,14 +125,14 @@
                     if (xhr.status === 200) {
                         if (button.name == "follow") {
                             button.setAttribute("class", "col-md-12 , btn btn-danger btn-lg");
-                            button.innerHTML = "unFollow";
+                            button.innerHTML = "دنبال نکن";
                             var numf = document.querySelector("#numf");
                             var val = parseInt(numf.innerHTML);
                             numf.innerHTML = val + 1 +' users';
                             button.name = "unfollow";
                         } else {
                             button.setAttribute("class", "col-md-12 , btn btn-success btn-lg");
-                            button.innerHTML = "follow";
+                            button.innerHTML = "دنبال کن";
                             var td = document.querySelector("#numf");
                             var val = parseInt(td.innerHTML);
                             td.innerHTML = val - 1 + ' users';

@@ -73,7 +73,9 @@
 	    <aside class="col-xs-6 col-md-4 ">
 		    <table class="table table-hover , col-md-12">
 		    	<thead>
-		        	<tr><th>your may know</th></tr>
+		        	<tr><th>
+                        گردشگران آشنا
+		        	</th></tr>
 		      	</thead>
                 {% for prof in cprof %}
 		        	<tr><td><a href="/profile/{{ prof.user.username }}" ><img src="/{{ prof.picture }}" class="col-md-3"><span class="col-md-9">{{ prof.user.first_name }} {{ prof.user.last_name }}</span><span class="col-md-9">{{ prof.location }}</span></a></td></tr>
@@ -83,7 +85,9 @@
 
 		    <table class="table table-hover , col-md-12">
 		    	<thead>
-		        	<tr><th>suggested films</th></tr>
+		        	<tr><th>
+                        گردش های پیشنهادی
+		        	</th></tr>
 		      	</thead>
                 {% for film in cfilm %}
 		        	<tr><td><a href="/film/{{ film.id }}"><img src="/{{ film.picture }}" class="col-md-4"><span class="col-md-8">{{ film.title }}</span><span class="col-md-8">{{ film.rating }}</span></a></td></tr>
