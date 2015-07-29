@@ -7,33 +7,33 @@
     <!-- Latest compiled and minified CSS -->
   	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-    <title>MVCenter</title>
+    <title>شبکه اجتماعی شادان</title>
 </head>
 <body>
   	<header></header>
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand">MVCenter</a>
-          </div>
+
 
           <div class="collapse navbar-collapse">
           <!-- is the tab active or not -->
-            <ul class="nav navbar-nav">
-                <li class={% if timeline_isactive == "active" %}"active"{% else %}""{% endif %}><a href="/timeline/{{ me.username }}">timeline</a></li>
-                <li class={% if timeline_isactive == "active" %}"active"{% else %}""{% endif %}><a href="/profile/{{ me.username }}">profile</a></li>
+            <ul class="nav navbar-nav ">
+                <li><a href="/logout/">خروج</a></li>
+                <li><a href="#">تنظیمات</a></li>
               </ul>
+
+
 
               <form method="get" action="/search/film/" class="navbar-form navbar-left">{% csrf_token %}
                 <div class="form-group">
-                    <input type="text" name="search_value" class="form-control" placeholder="Search" />
+                    <input type="text" name="search_value" class="form-control" placeholder="جستجو در بین نام گردش ها" />
                 </div>
-                <button type="submit" class="btn btn-default" id="search_link">Search</button>
+                <button type="submit" class="btn btn-default" id="search_link">جستجو</button>
               </form>
 
-              <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Notifications <span class="caret"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">هشدار ها <span class="caret"></span></a>
                   	<ul class="payam , dropdown-menu" role="menu">
 {#                  	<!-- menu -->#}
 {#                  		{% block drop_down_menue %}{% endblock %}#}
@@ -52,10 +52,15 @@
                         {% endif %}
 		            </ul>
                 </li>
-
-                <li><a href="#">setting</a></li>
-                <li><a href="/logout/">sign out</a></li>
+                <li class={% if timeline_isactive == "active" %}"active"{% else %}""{% endif %}><a href="/profile/{{ me.username }}">
+                حساب کاربری
+                </a></li>
+                <li class={% if timeline_isactive == "active" %}"active"{% else %}""{% endif %}><a href="/timeline/{{ me.username }}">
+                نوار زمان
+                </a></li>
               </ul>
+
+
           </div>
       </div>
     </nav>
@@ -64,23 +69,7 @@
     {% block search_bar %}{% endblock %}
 
     <article class="container">
-	  	<main class="col-xs-12 col-sm-6 col-md-8">
-		    <div class="blog-header">
-		          <h1 class="blog-title">MVCenter</h1>
-		          <p class="lead blog-description">you can see, find or add your favorite moveis.</p>
-		    </div>
-		<!--   posts    -->
-			{% block timeline_posts %}{% endblock %}
-    	<!-- porofile -->
-    		{% block profile %}{% endblock %}
-    	<!-- searchـresult -->
-    		{% block search_result %}{% endblock %}
-    	<!-- post -->
-    		{% block post %}{% endblock %}
-
-    	</main>
-
-    	<!-- aside -->
+        <!-- aside -->
 	    <aside class="col-xs-6 col-md-4 ">
 		    <table class="table table-hover , col-md-12">
 		    	<thead>
@@ -100,21 +89,32 @@
 		        	<tr><td><a href="/film/{{ film.id }}"><img src="/{{ film.picture }}" class="col-md-4"><span class="col-md-8">{{ film.title }}</span><span class="col-md-8">{{ film.rating }}</span></a></td></tr>
                 {% endfor %}
 		    </table>
-
-
-{#		    <table class="table table-hover , col-md-12">#}
-{#		    	<thead>#}
-{#		        	<tr><th>top films</th></tr>#}
-{#		      	</thead>#}
-{#		        	<tr><td><a href="%%%"><img src="/../../static/SocialNetwork/img/p1.jpg" class="col-md-4"><span class="col-md-8">MoneyBall</span><span class="col-md-8">****</span></a></td></tr>#}
-{#		    </table>  #}
 		</aside>
 		<!-- endaside -->
+
+	  	<main class="col-xs-12 col-sm-6 col-md-8">
+		    <div class="blog-header">
+		          <h1 class="blog-title">
+                      شادان
+		          </h1>
+		          <p class="lead blog-description">
+                      شبکه ی اجتماعی گردشگران ایران
+		          </p>
+		    </div>
+		<!--   posts    -->
+			{% block timeline_posts %}{% endblock %}
+    	<!-- porofile -->
+    		{% block profile %}{% endblock %}
+    	<!-- searchـresult -->
+    		{% block search_result %}{% endblock %}
+    	<!-- post -->
+    		{% block post %}{% endblock %}
+
+    	</main>
   	</article>
 
   	<footer class="bs-docs-footer , col-md-12 , bg-info , initialism">
-    this site is designed by niloofar mahzoon and farzaneh tahouni!! <br>
-    all right reserved.
+    تمامی حقوق این سایت متعلق به شرکت تحلیلگران می باشد.
   	</footer>
 
 

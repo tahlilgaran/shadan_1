@@ -2,6 +2,10 @@
 	font-size: 30px;
 	color: #19A83B;
 }
+
+body{
+    direction: rtl;
+}
 article{
 	margin-top: 50px;
 }
