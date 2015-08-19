@@ -1,15 +1,19 @@
 {% extends "search.html" %}
 	{% block user_result %}
         {% if not result  %}
-            No resutl found with this keyword.
+هیچ نتیجه ای پیدا نشد
         {% else %}
             {% for user in result %}
                 <section class= "info , col-md-6"><a href="/profile/{{ user.username }}">
                 <img src="\{{ user.profile.picture }}" class="col-md-4" />
                 <div class="col-md-8">
                     <table class="table table-hover">
-                        <tr><td>Name:</td><td>{{user.first_name}} {{ user.last_name }}</td></tr>
-                        <tr><td>age:</td><td>{{ user.profile.age }}</td></tr>
+                        <tr><td>
+                            نام:
+                        </td><td>{{user.first_name}} {{ user.last_name }}</td></tr>
+                        <tr><td>
+                            سن:
+                        </td><td>{{ user.profile.age }}</td></tr>
                     </table>
                 </div></a>
                 </section>

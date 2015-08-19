@@ -403,7 +403,7 @@ def like(request):
         author_note = Notification()
         author_note.user = post.author.user
         author_note.producer = user.profile
-        author_note.content = '{} liked your {} post'.format(author_note.producer.user.username,post.film.title)
+        author_note.content = '{} پست {} تو را لایک کرده است'.format(author_note.producer.user.username,post.film.title)
         author_note.save()
     else:
         like2 = Like.objects.filter(liker = user).filter(post = post)

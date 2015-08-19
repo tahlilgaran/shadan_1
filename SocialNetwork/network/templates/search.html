@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 {% block search_bar %}
 	<ul class="nav nav-tabs , col-md-12">
-		<li role="presentation" class="{{ film_active }}"><a href="/search/film/{{ key }}">result for films</a></li>
-		<li role="presentation" class={{ user_active }}><a href="/search/user/{{ key }}">result for users</a></li>
+		<li role="presentation" class="{{ film_active }}"><a href="/search/film/{{ key }}">
+            نتایج در گردش ها
+        </a></li>
+		<li role="presentation" class={{ user_active }}><a href="/search/user/{{ key }}">
+            نتایج در کاربران
+        </a></li>
 	</ul>
 
 {% endblock %}

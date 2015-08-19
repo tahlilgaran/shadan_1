@@ -18,13 +18,19 @@
                 <img src="\{{ follow.follower.picture }}" class="col-md-4" />
                 <div class="col-md-8">
                     <table class="table table-hover">
-                        <tr><td>Name:</td><td>{{follow.follower.user.first_name}} {{ follow.follower.user.last_name }}</td></tr>
-                        <tr><td>age:</td><td>{{ follow.follower.age }}</td></tr>
+                        <tr><td>
+                            نام
+                        </td><td>{{follow.follower.user.first_name}} {{ follow.follower.user.last_name }}</td></tr>
+                        <tr><td>
+                            سن
+                        </td><td>{{ follow.follower.age }}</td></tr>
                     </table>
                 </div></a>
             </section>
         {% endfor %}
     {% else %}
-        <h3>No people found...</h3>
+        <h3>
+        فردی پیدا نشد
+        </h3>
     {% endif %}
 {% endblock %}

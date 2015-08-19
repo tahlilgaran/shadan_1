@@ -36,7 +36,8 @@
                 {% endif %} {% endcomment %}
 
 
-                <form action="" method="post">{% csrf_token %}
+                <form action="" method="post">
+                    {% csrf_token %}
 
                 <div class="col-md-10">
                     <table class="table table-hover">
@@ -63,92 +64,20 @@
                     </div>
                 </div>
             </form>
-   {% comment %}         </form>
-                <div class="col-md-12 , form-group">
-                    <label  class="col-md-4 ">Email:</label>
-                    <div class="col-md-8">
-                        <input type="email" class="form-control" id="email" placeholder="Enter email">
-                        <span class="error"></span>
-                    </div>
 
-                </div>
-
-                <div class="col-md-12 , form-group ">
-                    <label for="inputEmail3" class="col-md-4 control-label , inputError1">User Name:</label>
-                    <div class="col-md-8">
-                        <input type="text" class="form-control " id="username" placeholder="Enter username">
-                        <span class="error"></span>
-
-                    </div>
-                </div>
-
-                <div class="col-md-12 , form-group ">
-                    <label for="inputEmail3" class="col-md-4 control-label , inputError1">Name:</label>
-                    <div class="col-md-8">
-                        <input type="text" class="form-control " id="name" placeholder="Enter your name">
-                        <span class="error"></span>
-                    </div>
-                </div>
-                    
-                <div class="col-md-12 , form-group ">
-                    <label for="inputEmail3" class="col-md-4 control-label, inputError1">Password:</label>
-                    <div class="col-md-8">
-                        <input type="password" class="form-control " id="pwd" placeholder="Enter password">
-                        <span class="error"></span>
-                    </div>
-                </div>
-
-                <div class="col-md-12 , form-group ">
-                    <label for="inputEmail3" class="col-md-4 control-label , inputError1">Confirm Password:</label>
-                    <div class="col-md-8">
-                        <input type="password" class="form-control " id="cpwd" placeholder="Enter Password again">
-                        <span class="error"></span>
-                    </div>
-                </div>
-
-                <div class="col-md-12 , form-group ">
-                    <label for="inputEmail3" class="col-md-4 control-label ">BirthDay:</label>
-                    <div class="col-md-8">
-                        <input type="text" class="form-control" id="birthday" placeholder="dd/mm/yyyy">
-                        <span class="error"></span>
-                    </div>
-                </div> 
-
-                <div class="col-md-12 , form-group ">
-                    <label for="inputEmail3" class="col-md-4 control-label">Location:</label>
-                    <div class="col-md-8">
-                        <input type="text" class="form-control " id="location" placeholder="Enter your location">
-                        <span class="error"></span>
-                    </div>
-                </div> 
-
-                <div class="form-group">
-                  <div class="col-md-12">
-                    <div class="checkbox">
-                      <label><input type="checkbox"> I agree with every thing! :)</label>
-                      <span id="agree"></span>
-                    </div>
-                  </div>
-                </div>        
-                
-                <div class="col-md-12 , pull-right">
-                    <button class="btn btn-success" role="button" class="col-md-6" id="sub">Submit</button>
-                    <a class="btn btn-default" href="login.html" role="button" class="col-md-6">Cancel</a>
-                </div>
-                               {% endcomment %}
             </section>
         </main>
     </article>
 
     <footer class="bs-docs-footer , col-md-12 , bg-info , initialism">
-    this site is designed by niloofar mahzoon and farzaneh tahouni!! <br>
-    all right reserved.
+    این سامانه توسط شرکت تحلیلگران طراحی گشته است.
+     <br>
+تمامی حقوق آن محفوظ است.
     </footer>
     <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
   <!-- Latest compiled JavaScript -->
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
 </body>
 </html>
